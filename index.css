@@ -1,0 +1,313 @@
+@font-face {
+    font-family: happy;
+    src: url(KGHAPPY.ttf);
+}
+@font-face {
+    font-family: alegra;
+    src: url(Alegra.otf);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+#header {
+    background-color: #FC7200;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#text-container {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#title {
+    font-family: "happy";
+    color: white;
+    font-size: 4vw;
+    font-weight: normal;
+    margin: 10px;
+    text-align: center;
+}
+
+#subtitle {
+    font-family: "alegra";
+    color: white;
+    font-size: 50px;
+    font-weight: lighter;
+    text-align: center;
+    margin: 10px;
+}
+
+#post-count{
+    font-family: "Alegra";
+    font-weight: normal;
+    color: white;
+}
+
+#comment {
+    background-color: white;
+    width: 50%;
+    height: 400px;
+    position: absolute;
+    bottom: -200px;
+    border-radius: 20px;
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+#image-container {
+    background-color: white;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: absolute;
+    top: -45px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#orange-container {
+    background-color: #FC7200;
+    width: 80%;
+    height: 80%;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment-image {
+    width: 60%;
+    height: 60%;
+    filter: invert(100%);
+}
+#comment>form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#comment>form>p {
+    font-family: "Alegra";
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    margin: 10px;
+
+}
+
+.input-container{
+    width: 60%;
+    height: 40px;
+    border-radius: 25px;
+    border: solid gray 2px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.input-container>img {
+    height: 80%;
+    margin-left: 10px;
+    filter: invert(50%);
+}
+.input-container>input {
+    height: 85%;
+    width: 85%;
+    border: none;
+    font-size: 20px;
+    margin-left: 20px;
+    outline: none;
+}
+
+.textarea-container{
+    width: 60%;
+    height: 100px;
+    border-radius: 25px;
+    border: solid gray 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.textarea-container>textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    outline: none;
+}
+
+#submit-button{
+    border: none;
+    background-color: #FC7200;
+    color: white;
+    width: 200px;
+    height: 70px;
+    border-radius: 35px;
+    font-size: 50px;
+    font-family: "Alegra";
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+@media (max-width: 1000px) {
+    #header {
+        height: 80vh;
+    }
+    #text-container{
+        width: 95%;
+        height: 60%;
+    }
+    #title{
+        font-size: 8vw;
+    }
+    #subtitle {
+        font-size: 5.5vw;
+    }
+    #comment{
+        width: 95%;
+    }
+    #image-container{
+        width: 70px;
+        height: 70px;
+        top: -35px;
+        left: 15px;
+    }
+    .input-container{
+        width: 90%;
+    }
+    .input-container>input{
+        margin-left: 0;
+    }
+    .textarea-container{
+        width: 90%;
+    }
+}
+
+#target-frame{
+    display: none;
+}
+
+#content{
+    width: 100%;
+    margin-top: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#content>div{
+    width: 50%;
+    /* overflow: hidden; */
+    box-sizing: border-box;
+}
+#content>div>h1{
+    font-family: "Alegra";
+    font-weight: normal;
+    font-size: 50px;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+@media (max-width: 800px) {
+    #content{
+        flex-direction: column;
+    }
+    #content>div{
+        width: 100%;
+    }
+    #featured-div{
+        order: 0;
+    }
+    #recent-div{
+        order: 1;
+    }
+}
+
+.post-container{
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.post{
+    max-width: 500px;
+    width: 90%;
+    height: 180px;
+    border: solid gray 1px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin-bottom: 50px;
+}
+.post-orange-circle{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #FC7200;
+    border-radius: 30px;
+    top: -30px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post-orange-circle>img{
+    width: 60%;
+    filter: invert(100%);
+}
+.by-label{
+    width: 100%;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 20px;
+    margin: 7px 0;
+    color: #FC7200;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+.comment-label{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 20px 0 20px;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+.from-label{
+    width: 100%;
+    color: gray;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    position: absolute;
+    margin: 0;
+    bottom: 10px;
+}

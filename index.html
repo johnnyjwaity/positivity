@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Spread Positivity" />
+        <meta name="title" property="og:title" content="Spread Positivity" />
+        <meta property="og:type" content="Website" />
+        <meta name="image" property="og:image" content="https://spreadpositivity.net/thumbnail.png" />
+        <meta name="description" property="og:description" content="Spread Positivity" />
+        <meta property="og:url" content="https://spreadpositivity.net/" />
+        <meta name="author" content="Johnny Waity" />
+        <link rel="stylesheet" type="text/css" href="background.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Spread Positivity</title>
+        <script src="main.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script>
+            var e = React.createElement
+        </script>
+        <script src="PostContainer.js"></script>
+        <script src="Post.js"></script>
+    </head>
+    <body>
+        <img src="thumbnail.png" style="display: none;"/>
+        <div id="header">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div id="text-container">
+                <h1 id="title">Spread The Positivity!</h1>
+                <h2 id="subtitle">In these hard times, it is important that we all come together, and help each other out. Leave a comment to support your fellow friends, neighbors, and people.</h2>
+                <h1 id="post-count">Total Posts: </h1>
+            </div>
+            <div id="comment">
+                <div id="image-container">
+                    <div id="orange-container">
+                        <img id="comment-image" src="comment.png"/>
+                    </div>
+                </div>
+                <form id="comment-form" action="https://api.spreadpositivity.net/message" method="POST" onsubmit="return sendFormData()">
+                    <p>Leave a Comment</p>
+                    <div class="input-container">
+                        <img src="person.png">
+                        <input name="name" placeholder="Name" required>
+                    </div>
+                    <div class="input-container">
+                        <img src="marker.png">
+                        <input name="place" placeholder="Location">
+                    </div>
+                    <div class="textarea-container">
+                        <textarea maxlength="200" name="message" placeholder="Write Positive Message Here..." required></textarea>
+                    </div>
+                    <input id="submit-button" type="submit" value="Post!">
+                </form>
+            </div>
+            
+        </div>
+        <div id="content">
+            <div id="recent-div">
+                <h1>Recent Posts</h1>
+                <div id="react-recent"></div>
+            </div>
+            <div id="featured-div">
+                <h1>Featured Posts</h1>
+                <div id="react-featured"></div>
+            </div>
+        </div>
+        <script>
+            var request = new XMLHttpRequest()
+            request.open("GET", "https://api.spreadpositivity.net/messages")
+            request.onload = function () {
+                if(request.response.success){
+                    ReactDOM.render(e(PostContainer, {messages: request.response.messages}), document.getElementById("react-recent"))
+                    ReactDOM.render(e(PostContainer, {messages: request.response.featured}), document.getElementById("react-featured"))
+                }
+            }
+            request.responseType = "json"
+            request.send()
+
+            var countRequest = new XMLHttpRequest()
+            countRequest.open("GET", "https://api.spreadpositivity.net/count")
+            countRequest.onload = function(){
+                if(countRequest.response.success){
+                    count(countRequest.response.count)
+                }
+            }
+            countRequest.responseType = "json"
+            countRequest.send()
+        </script>
+    </body>
+</html>
